@@ -1,11 +1,14 @@
 import './style.scss';
 import CardAccount from '../CardAccount';
-
+import { useState } from "react";
 
 export default function UserDetail(props) {
-    return <main className="main bg-dark">
+const user = props.userName;
+const [userName, setuserName] = useState(user);
+
+return <main className="main bg-dark">
       <div className="header">
-        <h1>Welcome back<br />{props.userName}!</h1>
+        <h1>Welcome back<br />{userName}!</h1>
         <button className="edit-button">Edit Name</button>
       </div>
       <h2 className="sr-only">Accounts</h2>

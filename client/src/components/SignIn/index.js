@@ -1,7 +1,19 @@
 import './style.scss';
-import { HashLink as Link } from 'react-router-hash-link';
+//import { HashLink as Link } from 'react-router-hash-link';
+import { useNavigate } from "react-router-dom";
+
 
 export default function SignIn() {
+  const navigate = useNavigate();
+  
+  const onPressSignIn = () => {
+    const userMail= document.querySelector('#username').value;
+    const userPassword= document.querySelector('#password').value;  
+    sessionStorage.setItem("token",userMail)
+    navigate({ pathname: "/user" });
+
+  }
+
   return (
     
       <section className="sign-in-content">
@@ -21,9 +33,9 @@ export default function SignIn() {
             <label htmlFor="remember-me">Remember me</label>
           </div>
          
-          <Link to="/user" className="sign-in-button">
+          <button onClick={onPressSignIn} to="/user" className="sign-in-button">
         Sign In 
-      </Link>
+      </button>
 
         </form>
       </section>

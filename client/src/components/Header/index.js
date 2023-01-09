@@ -1,8 +1,12 @@
 import argentBankLogo from '../../assets/argentBankLogo.png';
 import './style.scss';
-import { HashLink as Link } from 'react-router-hash-link';
+import Connexion from '../Connexion';
+
 
 export default function Header(){
+
+
+
     return <nav className="main-nav">
       <a className="main-nav-logo" href="./index.html">
         <img
@@ -14,10 +18,7 @@ export default function Header(){
       </a>
       <div>
 
-        <Link to="/signin" className="main-nav-item">
-          <i className="fa fa-user-circle"></i>
-       &nbsp;   Sign In &nbsp;
-      </Link>
+       {<Connexion/>}
       </div>
     </nav>
 
