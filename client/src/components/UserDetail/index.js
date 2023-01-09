@@ -1,10 +1,19 @@
 import './style.scss';
 import CardAccount from '../CardAccount';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Axios from 'axios';
 
-export default function UserDetail(props) {
-const user = props.userName;
-const [userName, setuserName] = useState(user);
+export default function UserDetail() {
+
+const [userName, setUserName] = useState("");
+useEffect(()=> {
+async function getProfile(){
+  const response = await Axios.post("http://localhost:3001/api/v1/user/profile", {}, {headers: { Authorization: `Bearer `+ sessionStorage.getItem("token") }} )
+   setUserName(response.data.body.firstName)
+}  
+getProfile()
+
+})
 
 return <main className="main bg-dark">
       <div className="header">
