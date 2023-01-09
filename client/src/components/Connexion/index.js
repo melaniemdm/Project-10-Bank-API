@@ -1,10 +1,18 @@
 import { HashLink as Link } from "react-router-hash-link";
 import { useNavigate } from "react-router-dom";
-import {useState} from 'react';
+import { useEffect, useState } from "react";
+import Axios from 'axios';
 
 export default function Connexion() {
-    const [firstName, setfirstName] = useState("tony");
-
+    const [firstName, setfirstName] = useState("");
+    useEffect(()=> {
+      async function getProfile(){
+        const response = await Axios.post("http://localhost:3001/api/v1/user/profile", {}, {headers: { Authorization: `Bearer `+ sessionStorage.getItem("token") }} )
+        setfirstName(response.data.body.firstName)
+      }  
+      getProfile()
+      
+      })
 
   const navigate = useNavigate();
   const onPressSignOut = (e) => {
