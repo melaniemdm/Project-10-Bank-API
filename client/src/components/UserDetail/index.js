@@ -12,7 +12,8 @@ const [userName, setUserName] = useState("");
 useEffect(()=> {
 async function getProfile(){
   const response = await Axios.post("http://localhost:3001/api/v1/user/profile", {}, {headers: { Authorization: `Bearer `+ sessionStorage.getItem("token") }} )
-   setUserName(response.data.body.firstName)
+   setUserName((response.data.body.firstName)+ " " + (response.data.body.lastName))
+   
 }  
 getProfile()
 
