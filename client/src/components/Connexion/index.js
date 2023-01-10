@@ -1,18 +1,11 @@
 import { HashLink as Link } from "react-router-hash-link";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Axios from 'axios';
+import { useSelector } from "react-redux";
 
 export default function Connexion() {
-    const [firstName, setfirstName] = useState("");
-    useEffect(()=> {
-      async function getProfile(){
-        const response = await Axios.post("http://localhost:3001/api/v1/user/profile", {}, {headers: { Authorization: `Bearer `+ sessionStorage.getItem("token") }} )
-        setfirstName(response.data.body.firstName)
-      }  
-      getProfile()
-      
-      })
+    //const [firstName, setfirstName] = useState("");
+    const user =useSelector((state)=>state.nameText)
+
 
   const navigate = useNavigate();
   const onPressSignOut = (e) => {
@@ -25,7 +18,7 @@ export default function Connexion() {
       <div>
         <a className="main-nav-item" href="./user.html">
           <i className="fa fa-user-circle"></i>
-         {firstName}
+         {user.firstName}
         </a>
         <Link
           onClick={(e) => onPressSignOut(e)}
