@@ -32,7 +32,7 @@ export default function Connexion() {
     );
   }
   return (
-    <Link to="/signin" className="main-nav-item">
+    <Link to="/login" className="main-nav-item">
       <i className="fa fa-user-circle"></i>
       &nbsp; Sign In &nbsp;
     </Link>

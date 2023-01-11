@@ -14,9 +14,9 @@ return (
       <Provider store={store}>
       <Header />
  <Routes>
-        <Route exact path="/signin" element={<SignInPage />} />
+        <Route exact path="/login" element={<SignInPage />} />
         <Route exact path="/" element={<Accueil />} />
-        <Route exact path="/user" element={<User />} />
+        <Route exact path="/profile" element={<User />} />
       </Routes>
       <Footer />
       </Provider>

@@ -16,7 +16,7 @@ export default function SignIn() {
     });
     console.log(response.data.body.token)
     sessionStorage.setItem("token",response.data.body.token)
-    navigate({ pathname: "/user" });
+    navigate({ pathname: "/profile" });
   }
 
 
@@ -39,7 +39,7 @@ export default function SignIn() {
             <label htmlFor="remember-me">Remember me</label>
           </div>
          
-          <button onClick={onPressSignIn} to="/user" className="sign-in-button">
+          <button onClick={onPressSignIn}  className="sign-in-button">
         Sign In 
       </button>
 
