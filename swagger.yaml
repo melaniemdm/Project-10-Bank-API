@@ -142,6 +142,8 @@ paths:
               $ref: '#/definitions/TransactionDetailResponse'
           '400':
             description: Invalid Fields
+          '404':
+            description: transaction is not existing
           '500':
             description: Internal Server Error
       post:
@@ -172,6 +174,8 @@ paths:
               $ref: '#/definitions/TransactionDetailResponse'
           '400':
             description: Invalid Fields
+          '404':
+            description: transaction is not existing  
           '500':
             description: Internal Server Error
       delete:
@@ -202,6 +206,8 @@ paths:
               $ref: '#/definitions/TransactionDetailResponse'
           '400':
             description: Invalid Fields
+          '404':
+            description: transaction is not existing  
           '500':
             description: Internal Server Error
       get:
@@ -226,6 +232,8 @@ paths:
               $ref: '#/definitions/TransactionDetailResponse'
           '400':
             description: Invalid Fields
+          '404':
+            description: transaction is not existing
           '500':
             description: Internal Server Error
   /user/transaction:
