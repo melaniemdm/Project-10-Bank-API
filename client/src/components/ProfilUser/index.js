@@ -1,6 +1,6 @@
 import Axios from "axios";
 import { useEffect, useState } from "react";
-import { closeModal } from "../../Utils/modal";
+import { closeModal } from "../../utils/modal";
 import "./style.scss";
 import { useDispatch } from "react-redux";
 import { changeName } from "../../redux";

@@ -2,7 +2,7 @@ import './style.scss';
 import CardAccount from '../CardAccount';
 import { useEffect } from "react";
 import Axios from 'axios';
-import { openModal } from '../../Utils/modal';
+import { openModal } from '../../utils/modal';
 import ProfilUser from '../ProfilUser';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeName } from '../../redux';

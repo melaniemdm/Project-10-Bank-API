@@ -34,3 +34,11 @@ node_modules
 config/runtime.yaml
 
 .DS_Store
+
+# misc
+*.ppt
+*.pptx
+*.doc
+*.docx
+*.pdf
+*.txt

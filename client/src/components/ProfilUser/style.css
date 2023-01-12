@@ -1,0 +1,11 @@
+.sign-in-content {
+  border: 1px solid black;
+}
+
+.containerUser {
+  display: none;
+}
+
+#lastName, #firstName, #mail {
+  margin-bottom: 10px;
+}/*# sourceMappingURL=style.css.map */
