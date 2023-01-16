@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { openModal } from '../../utils/modal';
 import ProfilUser from '../ProfilUser';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeName } from '../../redux';
+import { changeName } from '../../store/redux';
 import apiClient from '../../utils/apiClient';
 
 export default function UserDetail() {

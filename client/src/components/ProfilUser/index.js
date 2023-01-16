@@ -1,9 +1,8 @@
-import Axios from "axios";
 import { useEffect} from "react";
 import { closeModal } from "../../utils/modal";
 import "./style.scss";
 import { useDispatch } from "react-redux";
-import { changeName } from "../../redux";
+import { changeName } from "../../store/redux";
 import { useSelector } from "react-redux";
 import apiClient from "../../utils/apiClient";
 
@@ -27,7 +26,7 @@ dispatch(changeName({firstName, lastName} ))
   useEffect(() => {
    document.querySelector("#lastName").value = user.lastName;
    document.querySelector("#firstName").value = user.firstName;
-  }, []);
+  }, );
 
   async function sendProfile() {
     const firstName = document.querySelector("#firstName").value;

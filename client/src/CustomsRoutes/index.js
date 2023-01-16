@@ -5,7 +5,7 @@ import User from '../pages/User';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Provider } from "react-redux";
-import { store } from "../redux";
+import { store } from "../store/redux";
 
 
 export default function CustomsRoutes() {
