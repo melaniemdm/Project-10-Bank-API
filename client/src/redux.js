@@ -1,13 +1,13 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
-const todoName = createSlice({
-  name: "nameText",
+const userSlice = createSlice({
+  name: "userName",
   initialState: {lastName : "", firstName : ""},
 
   reducers: {
    
     changeName: (state, action) => {
-      //{type:"nameText/changeName", payload: "nouveau name"}
+      //{type:"userName/changeName", payload: "nouveau name"}
      state.firstName = action.payload.firstName;
      state.lastName = action.payload.lastName;
      console.log(action.payload)
@@ -15,10 +15,10 @@ const todoName = createSlice({
     },
   },
 });
-export const {changeName} = todoName.actions;
+export const {changeName} = userSlice.actions;
 
 export const store = configureStore({
   reducer: {
-    nameText: todoName.reducer,
+    userName: userSlice.reducer,
   },
 });

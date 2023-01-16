@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 export default function Connexion() {
     //const [firstName, setfirstName] = useState("");
-    const user =useSelector((state)=>state.nameText)
+    const user =useSelector((state)=>state.userName)
 
 
   const navigate = useNavigate();

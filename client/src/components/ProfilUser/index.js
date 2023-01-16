@@ -1,57 +1,39 @@
 import Axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { closeModal } from "../../utils/modal";
 import "./style.scss";
 import { useDispatch } from "react-redux";
 import { changeName } from "../../redux";
-
+import { useSelector } from "react-redux";
+import apiClient from "../../utils/apiClient";
 
 
 
 export default function ProfilUser() {
-  const [firstName, setFirstName] = useState("tony");
-  const [lastName, setLastName] = useState("stark");
-
+const user =useSelector((state)=>state.userName)
 const dispatch = useDispatch();
 
 const handleSubmit = (event) => {
-  console.log('bloublou')
-  event.preventDefault();
+ event.preventDefault();
+ const lastName =  document.querySelector("#lastName").value
+ const firstName =  document.querySelector("#firstName").value
+ console.log(firstName,lastName)
 dispatch(changeName({firstName, lastName} ))
 
-setFirstName("");
 };
 
 
 
   useEffect(() => {
-    async function getProfile() {
-      const response = await Axios.post(
-        "http://localhost:3001/api/v1/user/profile",
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ` + sessionStorage.getItem("token"),
-          },
-        }
-      );
-      setFirstName(response.data.body.firstName);
-      setLastName(response.data.body.lastName);
-    }
-    getProfile();
+   document.querySelector("#lastName").value = user.lastName;
+   document.querySelector("#firstName").value = user.firstName;
   }, []);
 
   async function sendProfile() {
-    await Axios.put(
-      "http://localhost:3001/api/v1/user/profile",
-      {
-        firstName: firstName,
-        lastName: lastName,
-      },
-      {
-        headers: { Authorization: `Bearer ` + sessionStorage.getItem("token") },
-      }
-    );
+    const firstName = document.querySelector("#firstName").value;
+    const lastName = document.querySelector("#lastName").value;
+    const token = sessionStorage.getItem("token");
+    await apiClient.updateName({firstName, lastName},token)
   }
 
   function saveAndValid() {
@@ -67,16 +49,16 @@ setFirstName("");
         <input
           id="lastName"
           type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          
+          onChange={(e) => handleSubmit(e)}
         ></input>
 
         <div>FirstName : </div>
         <input
           id="firstName"
           type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+         
+          onChange={(e) => handleSubmit(e)}
         ></input>
 
         <div id="mail">Mail : toto@gmail.com</div>

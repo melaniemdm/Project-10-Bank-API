@@ -1,7 +1,8 @@
 import './style.scss';
 //import { HashLink as Link } from 'react-router-hash-link';
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import apiClient from '../../utils/apiClient';
+
 
 
 export default function SignIn() {
@@ -10,12 +11,8 @@ export default function SignIn() {
   const onPressSignIn = async () => {
     const userMail= document.querySelector('#username').value;
     const userPassword= document.querySelector('#password').value;  
-    const response = await axios.post("http://localhost:3001/api/v1/user/login", {
-      email: userMail,
-      password: userPassword,
-    });
-    console.log(response.data.body.token)
-    sessionStorage.setItem("token",response.data.body.token)
+const token = await apiClient.getAuthorization(userMail, userPassword)
+    sessionStorage.setItem("token",token)
     navigate({ pathname: "/profile" });
   }
 

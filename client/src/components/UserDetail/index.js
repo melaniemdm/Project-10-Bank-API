@@ -1,23 +1,22 @@
 import './style.scss';
 import CardAccount from '../CardAccount';
 import { useEffect } from "react";
-import Axios from 'axios';
 import { openModal } from '../../utils/modal';
 import ProfilUser from '../ProfilUser';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeName } from '../../redux';
+import apiClient from '../../utils/apiClient';
 
 export default function UserDetail() {
 
-//const [userName, setUserName] = useState("");
-
-const user =useSelector((state)=>state.nameText)
+const user =useSelector((state)=>state.userName)
 const dispatch = useDispatch();
 
 useEffect(()=> {
 async function getProfile(){
-  const response = await Axios.post("http://localhost:3001/api/v1/user/profile", {}, {headers: { Authorization: `Bearer `+ sessionStorage.getItem("token") }} )
-  dispatch(changeName({firstName :response.data.body.firstName, lastName: response.data.body.lastName}))
+  const token = sessionStorage.getItem("token");
+  const userName = await apiClient.getUserName(token);
+  if (user.firstName === "" && user.lastName === "") dispatch(changeName(userName))
    
 }  
 getProfile()
