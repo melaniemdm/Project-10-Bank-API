@@ -1,7 +1,11 @@
 import axios from 'axios';
+const urlBase = "http://localhost:3001/api/v1";
+const endpoint = "/user"
+const routeLogin = "/login";
+const routeProfile = "/profile";
 
 async function getAuthorization(userMail, userPassword){
- const response = await axios.post("http://localhost:3001/api/v1/user/login", {
+ const response = await axios.post(urlBase +endpoint + routeLogin , {
         email: userMail,
         password: userPassword,
       });
@@ -10,13 +14,13 @@ async function getAuthorization(userMail, userPassword){
 
 async function getUserName(token){
 
-    const response = await axios.post("http://localhost:3001/api/v1/user/profile", {}, {headers: { Authorization: `Bearer `+ token }} )
+    const response = await axios.post(urlBase +endpoint + routeProfile, {}, {headers: { Authorization: `Bearer `+ token }} )
     return {firstName :response.data.body.firstName, lastName: response.data.body.lastName}
 }
 
 async function updateName(user,token ){
     await axios.put(
-        "http://localhost:3001/api/v1/user/profile",
+      urlBase + endpoint + routeProfile,
         {
           firstName:user.firstName ,
           lastName: user.lastName,
