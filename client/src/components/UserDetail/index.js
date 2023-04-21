@@ -10,6 +10,7 @@ import apiClient from '../../utils/apiClient';
 export default function UserDetail() {
 
 const user =useSelector((state)=>state.userName)
+// permet de déclencher l'action
 const dispatch = useDispatch();
 
 useEffect(()=> {

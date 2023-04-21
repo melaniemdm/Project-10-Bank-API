@@ -1,9 +1,8 @@
 import { useEffect} from "react";
 import { closeModal } from "../../utils/modal";
 import "./style.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector  } from "react-redux";
 import { changeName } from "../../store/redux";
-import { useSelector } from "react-redux";
 import apiClient from "../../utils/apiClient";
 
 
