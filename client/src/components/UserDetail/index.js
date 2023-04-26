@@ -8,15 +8,17 @@ import { changeName } from '../../store/redux';
 import apiClient from '../../utils/apiClient';
 
 export default function UserDetail() {
-
+// récupere les informations du store
 const user =useSelector((state)=>state.userName)
-// permet de déclencher l'action
+// permet de recuperer le déclencheur d'action
 const dispatch = useDispatch();
 
 useEffect(()=> {
 async function getProfile(){
   const token = sessionStorage.getItem("token");
+  // recupere les infos du backend
   const userName = await apiClient.getUserName(token);
+  //permet de dispatcher l'information que je recupere du backend
   if (user.firstName === "" && user.lastName === "") dispatch(changeName(userName))
    
 }  
