@@ -4,6 +4,7 @@ const endpoint = "/user"
 const routeLogin = "/login";
 const routeProfile = "/profile";
 
+//Récupère le token
 async function getAuthorization(userMail, userPassword){
  const response = await axios.post(urlBase +endpoint + routeLogin , {
         email: userMail,
@@ -12,12 +13,14 @@ async function getAuthorization(userMail, userPassword){
       return response.data.body.token
 }
 
+//Récupère les infos user
 async function getUserName(token){
 
     const response = await axios.post(urlBase +endpoint + routeProfile, {}, {headers: { Authorization: `Bearer `+ token }} )
     return {firstName :response.data.body.firstName, lastName: response.data.body.lastName}
 }
 
+//permet de modifier le lastname et firstname
 async function updateName(user,token ){
     await axios.put(
       urlBase + endpoint + routeProfile,

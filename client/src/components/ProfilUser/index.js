@@ -59,7 +59,7 @@ dispatch(changeName({firstName, lastName} ))
           onChange={(e) => handleSubmit(e)}
         ></input>
 
-        <div id="mail">Mail : toto@gmail.com</div>
+        {/* <div id="mail">Mail : toto@gmail.com</div> */}
 
         <button className="sign-in-button" onClick={() => saveAndValid()}>
           Valider
